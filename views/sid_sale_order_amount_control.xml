@@ -1,0 +1,47 @@
+<odoo>
+    <data>
+
+        <!--SALE ORDER - ORDERS 	model="ir.ui.view" 	sale.view_order_tree-->
+
+        <record id="sid_sale_order_amount_control.amount_total_and_contract" model="ir.ui.view">
+            <field name="name">sid_ov_amount_total_and_contract.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="17"/>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='name']" position="after">
+                <field name="quotations_id" widget="many2one" optional="show"/>
+              </xpath>
+              <xpath expr="//field[@name='amount_total']" position="before">
+                <field name="base_restante" string="Base a Entregar**" sum="Total a Entregar" optional="show"/>
+                <field name="excesos_pendientes" string="Excesos a Fact.**" sum="Total Excesos" optional="show"/>
+                <field name="hitos_pendientes" string="Hitos Pend.**" sum="Total Hitos" optional="show"/>
+                <field name="base_pendiente" string="Base a Fact.**" sum="Total a Facturar" optional="show"/>
+                <field name="base_total" sum="Total a Facturado" optional="show"/>
+              </xpath>
+            </field>
+        </record>
+
+        <!--SALE ORDER - ORDERS 	model="ir.ui.view" 	sale.sale_order_view_search_inherit_sale-->
+
+         <record id="sid_sale_order_amount_control.amount_total_and_contract_search" model="ir.ui.view">
+            <field name="name">amount_total_and_contract_search.search</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="17"/>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="arch" type="xml">
+                  <xpath expr="//search[1]/field[@name='name']" position="after">
+                    <field name="quotations_id" string="Referencia Pedido/Contrato"/>
+                  </xpath>
+                  <search>
+                    <searchpanel>
+                      <field name="invoice_status" enable_counters="1" select="multi"/>
+                      <field name="currency_id" enable_counters="1" select="multi"/>
+                      <field name="team_id" enable_counters="1" select="multi"/>
+                    </searchpanel>
+                  </search>
+            </field>
+         </record>
+
+    </data>
+</odoo>
