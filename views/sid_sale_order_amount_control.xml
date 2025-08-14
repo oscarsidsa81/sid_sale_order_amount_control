@@ -4,7 +4,7 @@
         <!--SALE ORDER - ORDERS 	model="ir.ui.view" 	sale.view_order_tree-->
 
         <record id="sid_sale_order_amount_control.amount_total_and_contract" model="ir.ui.view">
-            <field name="name">sid_ov_amount_total_and_contract.tree</field>
+            <field name="name">sale.order.tree</field>
             <field name="model">sale.order</field>
             <field name="priority" eval="17"/>
             <field name="inherit_id" ref="sale.view_order_tree"/>
@@ -25,7 +25,7 @@
         <!--SALE ORDER - ORDERS 	model="ir.ui.view" 	sale.sale_order_view_search_inherit_sale-->
 
          <record id="sid_sale_order_amount_control.amount_total_and_contract_search" model="ir.ui.view">
-            <field name="name">amount_total_and_contract_search.search</field>
+            <field name="name">sale.order.list.select</field>
             <field name="model">sale.order</field>
             <field name="priority" eval="17"/>
             <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
